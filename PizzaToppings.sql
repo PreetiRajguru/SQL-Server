@@ -24,19 +24,3 @@ FROM PizzaToppingsPrice t1
 JOIN PizzaToppingsPrice t2 ON t1.ToppingName < t2.ToppingName
 JOIN PizzaToppingsPrice t3 ON t2.ToppingName < t3.ToppingName
 ORDER BY TotalCost DESC, Topping1, Topping2, Topping3 ASC;
-
-
-
-
-
-
-
-
---all possible combinations
-SELECT DISTINCT p1.ToppingName, p2.ToppingName, p3.ToppingName
-FROM PizzaToppingsPrice p1 , PizzaToppingsPrice p2, PizzaToppingsPrice p3
-WHERE p1.ToppingName <> p2.ToppingName AND p1.ToppingName <> p3.ToppingName AND p2.ToppingName <> p3.ToppingName
-AND p2.ToppingName < p1.ToppingName AND
-p3.ToppingName < p1.ToppingName AND
-p2.ToppingName < p3.ToppingName;
-

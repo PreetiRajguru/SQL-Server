@@ -87,23 +87,3 @@ JOIN MusicCharts ON Songs.SongId = MusicCharts.SongId
 WHERE MusicCharts.Rank <= 10
 GROUP BY ArtistName
 ORDER BY AppearancesRank ASC;
-
-
-
---WITH T1 as 
---  (SELECT A.artist_name, S.song_id, GSR.rank 
---  FROM artists A
---  JOIN songs S ON A.artist_id = S.artist_id 
---  JOIN music_charts GSR ON GSR.SONG_ID = S.SONG_ID),
---T2 as 
---  (SELECT artist_name, COUNT(rank) 
---  FROM T1 
---  WHERE rank < 10
---  GROUP BY artist_name),
---T3 as 
---  (SELECT artist_name, RANK() OVER (ORDER BY COUNT DESC) AS artist_rank 
---  FROM T2)
---SELECT * FROM T3 
---WHERE artist_name < 5;
-
-
